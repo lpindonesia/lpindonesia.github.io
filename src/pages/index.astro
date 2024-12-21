@@ -5,6 +5,8 @@ import XLogo from '../assets/twitter-x.svg';
 import instagramLogo from '../assets/instagram.svg';
 import whatsAppLogo from '../assets/whatsapp.svg';
 import emailLogo from '../assets/email.svg';
+
+import SocialButtion from '../components/SocialButton.astro';
 ---
 
 <Layout title="LP Indonesia">
@@ -17,17 +19,9 @@ import emailLogo from '../assets/email.svg';
     <button class="p-4 bg-[#d60f0f] text-white rounded lg:hover:text-[#d60f0f] lg:hover:bg-white lg:border-[#d60f0f] border-2 lg:transition-all">📖 Panduan Konser #LPRocksMadya2025</button>
   </a>
   <div class="flex justify-center gap-x-4">
-    <a href="https://chat.whatsapp.com/IqXlFuxBu2b9Fsa88HqiuR" target="_blank" class="hover:scale-125 lg:transition-all">
-      <img src={whatsAppLogo.src} alt="WhatsApp Logo" class="w-6">
-    </a>
-    <a href="https://www.instagram.com/lp_indonesia" target="_blank" class="hover:scale-125 lg:transition-all">
-      <img src={instagramLogo.src} alt="Instagram Logo" class="w-6">
-    </a>
-    <a href="https://x.com/lp_indonesia" target="_blank" class="hover:scale-125 lg:transition-all">
-      <img src={XLogo.src} alt="X Logo" class="w-6">
-    </a>
-    <a href="mailto:lpindonesia.email@gmail.com" target="_blank" class="hover:scale-125 lg:transition-all">
-      <img src={emailLogo.src} alt="Email Logo" class="w-6">
-    </a>
+    <SocialButtion url="https://chat.whatsapp.com/IqXlFuxBu2b9Fsa88HqiuR" src={whatsAppLogo.src} alt="WhatsApp Logo" />
+    <SocialButtion url="https://www.instagram.com/lp_indonesia" src={instagramLogo.src} alt="Instagram Logo" />
+    <SocialButtion url="https://x.com/lp_indonesia" src={XLogo.src} alt="X Logo" />
+    <SocialButtion url="mailto:lpindonesia.email@gmail.com" src={emailLogo.src} alt="Email Logo" />
   </div>
 </Layout>

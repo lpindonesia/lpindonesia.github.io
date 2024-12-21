@@ -8,6 +8,8 @@ import emailLogo from '../assets/email.svg';
 
 import SocialButton from '../components/SocialButton.astro';
 import Button from '../components/Button.astro';
+
+const getCurrentYear = () => new Date().getFullYear();
 ---
 
 <Layout title="LP Indonesia">
@@ -17,14 +19,17 @@ import Button from '../components/Button.astro';
     <h1 class="font-['BebasNeue'] text-xl text-[#d60f0f] text-center">Est. 2009</h1>
   </div>
   <div class="mb-4 mt-4 grid grid-cols-1 gap-y-2">
-    <a href="https://linkinparkinjakarta2025.com/" target="_blank">
+    <a href="https://linkinparkinjakarta2025.com" target="_blank">
       <Button label="🎫 Live in Jakarta 2025" />
     </a>
     <a href="https://bit.ly/panduanlprocksmadya2025" target="_blank">
       <Button label="📖 Panduan Nonton Konser" />
     </a>
-    <a href="https://www.instagram.com/p/DCg1x44xYtE/" target="_blank">
+    <a href="https://www.instagram.com/p/DCg1x44xYtE" target="_blank">
       <Button label="🎧 From Zero Listening Party" />
+    </a>
+    <a>
+      <Button disabled label="👕 Merchandise LPI (Coming Soon!)" />
     </a>
   </div>
   <div class="flex justify-center gap-x-4">
@@ -33,4 +38,7 @@ import Button from '../components/Button.astro';
     <SocialButton url="https://x.com/lp_indonesia" src={XLogo.src} alt="X Logo" />
     <SocialButton url="mailto:lpindonesia.email@gmail.com" src={emailLogo.src} alt="Email Logo" />
   </div>
+  <footer class="mt-8">
+    © {getCurrentYear()} LP Indonesia
+  </footer>
 </Layout>

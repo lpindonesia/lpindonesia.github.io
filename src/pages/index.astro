@@ -6,22 +6,28 @@ import instagramLogo from '../assets/instagram.svg';
 import whatsAppLogo from '../assets/whatsapp.svg';
 import emailLogo from '../assets/email.svg';
 
-import SocialButtion from '../components/SocialButton.astro';
+import SocialButton from '../components/SocialButton.astro';
+import Button from '../components/Button.astro';
 ---
 
 <Layout title="LP Indonesia">
   <img src={LPILogo.src} alt="LPI Logo" class="w-48 mb-4" />
-  <div class="mb-4">
+  <div>
     <h1 class="-mb-2 font-['BebasNeue'] text-4xl text-[#d60f0f] text-center">LP Indonesia</h1>
     <h1 class="font-['BebasNeue'] text-xl text-[#d60f0f] text-center">Est. 2009</h1>
   </div>
-  <a href="https://bit.ly/panduanlprocksmadya2025" target="_blank" class="mb-4">
-    <button class="p-4 bg-[#d60f0f] text-white rounded lg:hover:text-[#d60f0f] lg:hover:bg-white lg:border-[#d60f0f] border-2 lg:transition-all">📖 Panduan Konser #LPRocksMadya2025</button>
-  </a>
+  <div class="mb-4 mt-4 flex flex-col">
+    <a href="https://linkinparkinjakarta2025.com/" target="_blank" class="mb-2">
+      <Button label="🎫 Live in Jakarta 2025" />
+    </a>
+    <a href="https://bit.ly/panduanlprocksmadya2025" target="_blank">
+      <Button label="📖 Panduan Nonton Konser" />
+    </a>
+  </div>
   <div class="flex justify-center gap-x-4">
-    <SocialButtion url="https://chat.whatsapp.com/IqXlFuxBu2b9Fsa88HqiuR" src={whatsAppLogo.src} alt="WhatsApp Logo" />
-    <SocialButtion url="https://www.instagram.com/lp_indonesia" src={instagramLogo.src} alt="Instagram Logo" />
-    <SocialButtion url="https://x.com/lp_indonesia" src={XLogo.src} alt="X Logo" />
-    <SocialButtion url="mailto:lpindonesia.email@gmail.com" src={emailLogo.src} alt="Email Logo" />
+    <SocialButton url="https://chat.whatsapp.com/IqXlFuxBu2b9Fsa88HqiuR" src={whatsAppLogo.src} alt="WhatsApp Logo" />
+    <SocialButton url="https://www.instagram.com/lp_indonesia" src={instagramLogo.src} alt="Instagram Logo" />
+    <SocialButton url="https://x.com/lp_indonesia" src={XLogo.src} alt="X Logo" />
+    <SocialButton url="mailto:lpindonesia.email@gmail.com" src={emailLogo.src} alt="Email Logo" />
   </div>
 </Layout>

@@ -4,23 +4,30 @@ import LPILogo from '../assets/lpi-logo-2024-red.svg';
 import XLogo from '../assets/twitter-x.svg';
 import instagramLogo from '../assets/instagram.svg';
 import whatsAppLogo from '../assets/whatsapp.svg';
+import emailLogo from '../assets/email.svg';
 ---
 
 <Layout title="LP Indonesia">
   <img src={LPILogo.src} alt="LPI Logo" class="w-48 mb-4" />
-  <div>
+  <div class="mb-4">
     <h1 class="-mb-2 font-['BebasNeue'] text-4xl text-[#d60f0f] text-center">LP Indonesia</h1>
-    <h1 class="mb-4 font-['BebasNeue'] text-xl text-[#d60f0f] text-center">Est. 2009</h1>
-    <div class="flex justify-center gap-x-4">
-      <a href="https://chat.whatsapp.com/IqXlFuxBu2b9Fsa88HqiuR" target="_blank">
-        <img src={whatsAppLogo.src} alt="WhatsApp Logo" class="w-6">
-      </a>
-      <a href="https://www.instagram.com/lp_indonesia" class="uppercase" target="_blank">
-        <img src={instagramLogo.src} alt="Instagram Logo" class="w-6">
-      </a>
-      <a href="https://x.com/lp_indonesia" target="_blank">
-        <img src={XLogo.src} alt="X Logo" class="w-6">
-      </a>
-    </div>
+    <h1 class="font-['BebasNeue'] text-xl text-[#d60f0f] text-center">Est. 2009</h1>
+  </div>
+  <a href="https://bit.ly/panduanlprocksmadya2025" target="_blank" class="mb-4">
+    <button class="p-4 bg-[#d60f0f] text-white rounded lg:hover:text-[#d60f0f] lg:hover:bg-white lg:border-[#d60f0f] border-2 lg:transition-all">📖 Panduan Konser #LPRocksMadya2025</button>
+  </a>
+  <div class="flex justify-center gap-x-4">
+    <a href="https://chat.whatsapp.com/IqXlFuxBu2b9Fsa88HqiuR" target="_blank" class="hover:scale-125 lg:transition-all">
+      <img src={whatsAppLogo.src} alt="WhatsApp Logo" class="w-6">
+    </a>
+    <a href="https://www.instagram.com/lp_indonesia" target="_blank" class="hover:scale-125 lg:transition-all">
+      <img src={instagramLogo.src} alt="Instagram Logo" class="w-6">
+    </a>
+    <a href="https://x.com/lp_indonesia" target="_blank" class="hover:scale-125 lg:transition-all">
+      <img src={XLogo.src} alt="X Logo" class="w-6">
+    </a>
+    <a href="mailto:lpindonesia.email@gmail.com" target="_blank" class="hover:scale-125 lg:transition-all">
+      <img src={emailLogo.src} alt="Email Logo" class="w-6">
+    </a>
   </div>
 </Layout>

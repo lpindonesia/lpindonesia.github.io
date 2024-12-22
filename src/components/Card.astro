@@ -1,0 +1,10 @@
+---
+import { Image } from 'astro:assets';
+const { title, date, img, alt } = Astro.props
+---
+
+<div class="bg-white w-full md:w-96 p-4 rounded-lg shadow-lg mb-4 lg:hover:scale-[1.05] lg:transition-all">
+  <Image src={img} alt={alt} class="w-full h-48 overflow-hidden rounded object-cover" />
+  <h2 class="mt-2 font-medium">{title}</h2>
+  <small>{date}</small>
+</div>

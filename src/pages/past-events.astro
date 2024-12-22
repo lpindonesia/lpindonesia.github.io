@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+
+import reconnect2020 from '../assets/events/reconnect-2020.jpg';
+import rememberingChester2017 from '../assets/events/20170730-remembering-chester.jpg';
+import charity2012 from '../assets/events/20120106-charity.jpg';
+import tribute2013 from '../assets/events/20131026-tribute.jpg';
+---
+
+<Layout title="Past Events | LP Indonesia">
+  <a href="/" class="block mb-4 text-blue-500 lg:hover:underline">← Back to Home</a>
+  <h1 class="font-bold text-2xl mb-8">Past Events</h1>
+  <p class="mb-4">Here are some of the past events that LP Indonesia has supported</p>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <Card
+      title="LP Indonesia Fans Virtual Gathering"
+      date="10 October 2020"
+      img={reconnect2020}
+      alt="LP Indonesia Fans Virtual Gathering"
+    />
+    <Card
+      title="#LPMemorialJakarta - Remembering Chester"
+      date="30 July 2017"
+      img={rememberingChester2017}
+      alt="#LPMemorialJakarta - Remembering Chester"
+    />
+    <Card
+      title="A Tribute to Linkin Park 2013"
+      date="26 October 2013"
+      img={tribute2013}
+      alt="A Tribute to Linkin Park 2013"
+    />
+    <Card
+      title="Bogor Charity 2012"
+      date="1 July 2012"
+      img={charity2012}
+      alt="Bogor Charity 2012"
+    />
+  </div>
+</Layout>

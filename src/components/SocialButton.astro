@@ -1,7 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 const { url, src, alt } = Astro.props;
 ---
 
-<a href={url} target="_blank" class="lg:hover:scale-125 lg:transition-all">
-  <img src={src} alt={alt} class="w-6">
+<a href={url} target="_blank" class="lg:hover:scale-[1.05] lg:transition-all">
+  <Image src={src} alt={alt} class="w-6">
 </a>

@@ -1,5 +1,10 @@
 ---
+import { Image } from 'astro:assets';
+import LPILogo from '../assets/lpi-logo-2024-red.svg';
+
 const getCurrentYear = () => new Date().getFullYear();
+const currentPath = Astro.url.pathname;
+const { title } = Astro.props
 ---
 
 <!doctype html>
@@ -11,14 +16,21 @@ const getCurrentYear = () => new Date().getFullYear();
 		<meta name="generator" content={Astro.generator} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="LP Indonesia" />
-    <meta property="og:url" content="https://lpindonesia.github.io/" />
+    <meta property="og:url" content="https://lpindonesia.com" />
     <meta property="og:image" content="/images/lpi-og-landscape.png" />
     <meta property="og:description" content="Est. 2009 | Always, #IndonesiaNeedsLP" />
-		<title>LP Indonesia</title>
+		<title>{title}</title>
 	</head>
 	<body class="flex flex-col items-center py-8 px-4">
 		<slot />
-    <footer class="mt-8">
+    <footer class="mt-8 flex flex-col items-center">
+      {
+        currentPath !== '/' && (
+          <a href="/" class="block">
+            <Image src={LPILogo} alt="LP Indonesia Logo" class="w-8" />
+          </a>
+        )
+      }
       © {getCurrentYear()} LP Indonesia
     </footer>
 	</body>

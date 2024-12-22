@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+
 import Layout from '../layouts/Layout.astro';
 import LPILogo from '../assets/lpi-logo-2024-red.svg';
 import XLogo from '../assets/twitter-x.svg';
@@ -8,12 +10,10 @@ import emailLogo from '../assets/email.svg';
 
 import SocialButton from '../components/SocialButton.astro';
 import Button from '../components/Button.astro';
-
-const getCurrentYear = () => new Date().getFullYear();
 ---
 
 <Layout title="LP Indonesia">
-  <img src={LPILogo.src} alt="LP Indonesia Logo" class="w-44 mb-4" />
+  <Image src={LPILogo} alt="LP Indonesia Logo" class="w-44 mb-4" />
   <div>
     <h1 class="-mb-2 font-['BebasNeue'] text-4xl text-[#d60f0f] text-center">LP Indonesia</h1>
     <h1 class="font-['BebasNeue'] text-xl text-[#d60f0f] text-center">Est. 2009</h1>
@@ -31,17 +31,17 @@ const getCurrentYear = () => new Date().getFullYear();
     <a href="https://www.instagram.com/p/DCg1x44xYtE" target="_blank">
       <Button label="🎧 From Zero Listening Party" />
     </a>
+    <a href="past-events">
+      <Button label="📅 Past Events" />
+    </a>
     <a>
       <Button disabled label="👕 LPI Merch (Coming Soon!)" />
     </a>
   </div>
   <div class="flex justify-center gap-x-4">
-    <SocialButton url="https://chat.whatsapp.com/IqXlFuxBu2b9Fsa88HqiuR" src={whatsAppLogo.src} alt="WhatsApp Logo" />
-    <SocialButton url="https://www.instagram.com/lp_indonesia" src={instagramLogo.src} alt="Instagram Logo" />
-    <SocialButton url="https://x.com/lp_indonesia" src={XLogo.src} alt="X Logo" />
-    <SocialButton url="mailto:lpindonesia.email@gmail.com" src={emailLogo.src} alt="Email Logo" />
+    <SocialButton url="https://chat.whatsapp.com/IqXlFuxBu2b9Fsa88HqiuR" src={whatsAppLogo} alt="WhatsApp Logo" />
+    <SocialButton url="https://www.instagram.com/lp_indonesia" src={instagramLogo} alt="Instagram Logo" />
+    <SocialButton url="https://x.com/lp_indonesia" src={XLogo} alt="X Logo" />
+    <SocialButton url="mailto:lpindonesia.email@gmail.com" src={emailLogo} alt="Email Logo" />
   </div>
-  <footer class="mt-8">
-    © {getCurrentYear()} LP Indonesia
-  </footer>
 </Layout>

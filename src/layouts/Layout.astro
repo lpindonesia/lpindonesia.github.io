@@ -1,3 +1,7 @@
+---
+const getCurrentYear = () => new Date().getFullYear();
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -14,6 +18,9 @@
 	</head>
 	<body class="flex flex-col items-center py-8 px-4">
 		<slot />
+    <footer class="mt-8">
+      © {getCurrentYear()} LP Indonesia
+    </footer>
 	</body>
 </html>
 

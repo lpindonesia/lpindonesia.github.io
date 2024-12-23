@@ -7,13 +7,14 @@ const { name, price, features, isBestValue } = Astro.props;
 ---
 
 <div class:list={[
-    "relative p-4 w-64 rounded-lg shadow-lg flex flex-col",
-    isBestValue ? "bg-rose-50" : "bg-white"
+    "bg-white p-4 w-64 rounded-lg shadow-lg flex flex-col",
+    isBestValue ? "border-2 border-rose-200" : ""
   ]}>
-  {
-    isBestValue && <div class="absolute -top-2 m-auto left-0 right-0 w-fit bg-[#d60f0f] text-white font-medium text-sm py-1 px-2 rounded-full self-start">Best Value</div>
-  }
-  <div class="w-48 h-48 border-2 border-gray-800 bg-slate-200 rounded-lg overflow-hidden self-center" />
+  <div class="relative w-48 h-48 border-2 border-gray-800 bg-slate-200 rounded-lg overflow-hidden self-center">
+    {
+      isBestValue && <div class="absolute right-0 w-fit bg-[#d60f0f] text-white font-medium text-sm py-1 px-2 rounded-md self-start">Best Value</div>
+    }
+  </div>
   <h3 class="mt-2 font-semibold text-lg">{name}</h3>
   <span class="font-bold text-xl">IDR {price}K</span>
   <ul class="mt-2">

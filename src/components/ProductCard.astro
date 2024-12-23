@@ -3,11 +3,11 @@ import { Image } from 'astro:assets';
 
 import checkGreen from '../assets/check-green.svg';
 
-const { name, price, img, features, isBestValue } = Astro.props;
+const { id, name, price, img, features, isBestValue } = Astro.props;
 ---
 
-<div class:list={[
-    "bg-white p-4 w-64 rounded-lg shadow-lg flex flex-col",
+<div id={id} class:list={[
+    "bg-white p-4 w-64 rounded-lg shadow-lg flex flex-col cursor-pointer lg:hover:scale-[1.05] lg:transition-all",
     isBestValue ? "border-2 border-rose-200" : ""
   ]}>
   <div class="relative w-48 h-48 border-2 border-gray-700 bg-slate-200 rounded-lg overflow-hidden self-center">
@@ -26,3 +26,21 @@ const { name, price, img, features, isBestValue } = Astro.props;
     }
   </ul>
 </div>
+<dialog id={'dialog-' + id} class="p2 w-full md:w-4/12 fixed">
+  <button autofocus id={'close-dialog-' + id} class="absolute top-4 right-4 px-2 py-1 bg-[#d60f0f] text-white font-bold rounded-md">✕</button>
+  <Image src={img} alt={name} class="object-cover w-full"/>
+</dialog>
+
+<script define:vars={{id}}>
+  const dialog = document.getElementById('dialog-' + id);
+  const showButton = document.getElementById(id);
+  const closeButton = document.getElementById('close-dialog-' + id);
+
+  showButton.addEventListener("click", () => {
+    dialog.showModal();
+  });
+
+  closeButton.addEventListener("click", () => {
+    dialog.close();
+  });
+</script>

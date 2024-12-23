@@ -13,6 +13,7 @@ import bundleB from '../assets/images/merch/bundle-b.jpg';
 const products = [
   {
     name: 'T-Shirt',
+    id: 'merch-t-shirt',
     price: 110,
     img: tShirt,
     features: ['Cotton combed 24s', 'Size starts from S to 5XL', 'Unisex', 'Two-sided plastisol print'],
@@ -20,6 +21,7 @@ const products = [
   },
   {
     name: 'Dual Bundle',
+    id: 'merch-dual-bundle',
     price: 130,
     img: bundleA,
     features: ['All features on T-Shirt', 'Stylish Ribbon Lanyard'],
@@ -27,6 +29,7 @@ const products = [
   },
   {
     name: 'Starter Pack Bundle',
+    id: 'merch-starter-pack-bundle',
     price: 140,
     img: bundleB,
     features: ['All features on Dual Bundle', 'Tote Bag'],
@@ -47,6 +50,7 @@ const products = [
     {
       products.map(product => (
         <ProductCard
+          id={product.id}
           name={product.name}
           price={product.price}
           img={product.img}

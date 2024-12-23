@@ -6,27 +6,35 @@ import ProductCard from '../components/ProductCard.astro';
 
 import heartRed from '../assets/heart-red.svg';
 
+import tShirt from '../assets/images/merch/t-shirt.jpg';
+import bundleA from '../assets/images/merch/bundle-a.jpg';
+import bundleB from '../assets/images/merch/bundle-b.jpg';
+
 const products = [
   {
     name: 'T-Shirt',
     price: 110,
+    img: tShirt,
     features: ['Cotton combed 24s', 'Size starts from S to 5XL', 'Unisex', 'Two-sided plastisol print'],
     isBestValue: false
   },
   {
     name: 'Dual Bundle',
     price: 130,
+    img: bundleA,
     features: ['All features on T-Shirt', 'Stylish Ribbon Lanyard'],
     isBestValue: false
   },
   {
     name: 'Starter Pack Bundle',
     price: 140,
+    img: bundleB,
     features: ['All features on Dual Bundle', 'Tote Bag'],
     isBestValue: true
   }
 ];
 ---
+
 <Layout title="LPI Merch | LP Indonesia">
   <a href="/" class="block mb-4 text-blue-500 lg:hover:underline">← Back to Home</a>
   <h1 class="font-bold text-2xl mb-8">LPI Merch</h1>
@@ -41,6 +49,7 @@ const products = [
         <ProductCard
           name={product.name}
           price={product.price}
+          img={product.img}
           features={product.features}
           isBestValue={product.isBestValue}
         />

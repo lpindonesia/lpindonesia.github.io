@@ -7,7 +7,7 @@ const { id, name, price, img, features, isBestValue } = Astro.props;
 ---
 
 <div id={id} class:list={[
-    "bg-white p-4 w-64 rounded-lg shadow-lg flex flex-col cursor-pointer lg:hover:scale-[1.05] lg:transition-all",
+    "bg-white p-4 w-72 rounded-lg shadow-lg flex flex-col cursor-pointer lg:hover:scale-[1.05] lg:transition-all",
     isBestValue ? "border-2 border-rose-200" : ""
   ]}>
   <div class="relative w-48 h-48 border-2 border-gray-700 bg-slate-200 rounded-lg overflow-hidden self-center">

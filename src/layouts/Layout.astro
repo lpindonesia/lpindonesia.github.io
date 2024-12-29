@@ -4,7 +4,11 @@ import LPILogo from '../assets/lpi-logo-2024-red.svg';
 
 const getCurrentYear = () => new Date().getFullYear();
 const currentPath = Astro.url.pathname;
-const { title } = Astro.props
+const {
+  title,
+  imgUrl = '/images/lpi-og-landscape.png',
+  description = 'Est. 2009 | Always, #IndonesiaNeedsLP'
+} = Astro.props
 ---
 
 <!doctype html>
@@ -15,10 +19,10 @@ const { title } = Astro.props
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="LP Indonesia" />
+    <meta property="og:title" content={title} />
     <meta property="og:url" content="https://lpindonesia.com" />
-    <meta property="og:image" content="/images/lpi-og-landscape.png" />
-    <meta property="og:description" content="Est. 2009 | Always, #IndonesiaNeedsLP" />
+    <meta property="og:image" content={imgUrl} />
+    <meta property="og:description" content={description} />
 		<title>{title}</title>
 	</head>
 	<body class="flex flex-col items-center py-8 px-4">

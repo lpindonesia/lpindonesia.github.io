@@ -1,0 +1,132 @@
+---
+// CountdownTimer.astro
+interface Props {
+  targetDate?: Date
+}
+---
+
+<div id='timer-wrapper'>
+  (<span id='timer'
+    ><span class='number'></span><span class='colon'>:</span><span
+      class='number'></span><span class='colon'>:</span><span class='number'
+    ></span></span
+  >)
+</div>
+
+<style>
+  .colon {
+    animation: blink 1s infinite;
+    opacity: 1;
+  }
+
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  #timer-wrapper {
+    font-family: monospace;
+  }
+
+  .number {
+    display: inline-block;
+  }
+
+  /* Add 'd' 'h' 'm' after respective numbers */
+  .number:nth-child(1)::after {
+    content: 'd';
+  }
+  .number:nth-child(3)::after {
+    content: 'h';
+  }
+  .number:nth-child(5)::after {
+    content: 'm';
+  }
+</style>
+
+<script>
+  interface TimeLeft {
+    days: number
+    hours: number
+    minutes: number
+  }
+
+  class CountdownTimer {
+    private element: HTMLElement
+    private targetDate: Date
+    private interval: number | null = null
+    private numberElements: NodeListOf<Element>
+
+    constructor(element: HTMLElement, targetDate: string) {
+      this.element = element
+      this.targetDate = new Date(targetDate)
+      this.numberElements = element.querySelectorAll('.number')
+      this.updateDisplay()
+      this.start()
+    }
+
+    private calculateTimeLeft(): TimeLeft {
+      const now = new Date()
+      const difference = this.targetDate.getTime() - now.getTime()
+
+      if (difference <= 0) {
+        return { days: 0, hours: 0, minutes: 0 }
+      }
+
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24))
+      const hours = Math.floor(
+        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      )
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60))
+
+      return { days, hours, minutes }
+    }
+
+    private updateDisplay(): void {
+      const timeLeft = this.calculateTimeLeft()
+      const { days, hours, minutes } = timeLeft
+
+      const values = [
+        days.toString(),
+        String(hours).padStart(2, '0'),
+        String(minutes).padStart(2, '0'),
+      ]
+
+      this.numberElements.forEach((element, index) => {
+        element.textContent = values[index]
+      })
+
+      if (days === 0 && hours === 0 && minutes === 0) {
+        this.stop()
+      }
+    }
+
+    private start(): void {
+      if (!this.interval) {
+        this.updateDisplay()
+        this.interval = window.setInterval(() => this.updateDisplay(), 60000)
+      }
+    }
+
+    private stop(): void {
+      if (this.interval) {
+        window.clearInterval(this.interval)
+        this.interval = null
+      }
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const timerElement = document.getElementById('timer')
+    if (timerElement) {
+      new CountdownTimer(timerElement, '2025-02-16T00:00:00')
+    } else {
+      console.error('Timer element not found')
+    }
+  })
+</script>

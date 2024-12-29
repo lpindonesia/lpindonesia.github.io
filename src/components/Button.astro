@@ -1,13 +1,16 @@
 ---
-import CountdownTimer from "./CountdownTimer.astro"
-
 const { id, label, disabled } = Astro.props
 ---
 
-<button id={id} disabled={disabled} class:list={[
-    "w-80 p-4 font-medium rounded-lg",
-    disabled ? "bg-[#E0E0E0] text-[#9E9E9E] cursor-not-allowed" : "bg-[#d60f0f] text-white lg:hover:bg-[#b20d0d] lg:transition-all"
+<button
+  id={id}
+  disabled={disabled}
+  class:list={[
+    'w-80 p-4 font-medium rounded-lg',
+    disabled
+      ? 'bg-[#E0E0E0] text-[#9E9E9E] cursor-not-allowed'
+      : 'bg-[#d60f0f] text-white lg:hover:bg-[#b20d0d] lg:transition-all',
   ]}
 >
-  {label} {label === "🎫 Live in Jakarta 2025" && <CountdownTimer />}
+  {label}
 </button>

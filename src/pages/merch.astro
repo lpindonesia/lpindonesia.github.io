@@ -1,14 +1,14 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from 'astro:assets'
 
-import Layout from '../layouts/Layout.astro';
-import ProductCard from '../components/ProductCard.astro';
+import Layout from '../layouts/Layout.astro'
+import ProductCard from '../components/ProductCard.astro'
 
-import heartRed from '../assets/heart-red.svg';
+import heartRed from '../assets/heart-red.svg'
 
-import tShirt from '../assets/images/merch/t-shirt.jpg';
-import bundleA from '../assets/images/merch/bundle-a.jpg';
-import bundleB from '../assets/images/merch/bundle-b.jpg';
+import tShirt from '../assets/images/merch/t-shirt.jpg'
+import bundleA from '../assets/images/merch/bundle-a.jpg'
+import bundleB from '../assets/images/merch/bundle-b.jpg'
 
 const products = [
   {
@@ -16,8 +16,14 @@ const products = [
     id: 'merch-t-shirt',
     price: 110,
     img: tShirt,
-    features: ['Cotton combed 24s', 'Size starts from S to 5XL', 'Unisex', 'Long sleeve available', 'Two-sided plastisol print'],
-    isBestValue: false
+    features: [
+      'Cotton combed 24s',
+      'Size starts from S to 5XL',
+      'Long sleeve available',
+      'Unisex',
+      'Two-sided plastisol print',
+    ],
+    isBestValue: false,
   },
   {
     name: 'Duo Bundle',
@@ -25,7 +31,7 @@ const products = [
     price: 135,
     img: bundleA,
     features: ['All features on T-Shirt', 'Tote Bag'],
-    isBestValue: false
+    isBestValue: false,
   },
   {
     name: 'Complete Bundle',
@@ -33,26 +39,33 @@ const products = [
     price: 150,
     img: bundleB,
     features: ['All features on Duo Bundle', 'Stylish Ribbon Lanyard'],
-    isBestValue: true
-  }
-];
+    isBestValue: true,
+  },
+]
 ---
 
 <Layout
-  title="LPI Merch | LP Indonesia"
-  imgUrl="/images/lpi-og-merch.jpg"
-  description="All merch profits go to the community to support local events, charitable initiatives, and free perks for members."
+  title='LPI Merch | LP Indonesia'
+  imgUrl='/images/lpi-og-merch.jpg'
+  description='All merch profits go to the community to support local events, charitable initiatives, and free perks for members.'
 >
-  <a href="/" class="block mb-4 text-blue-500 lg:hover:underline">← Back to Home</a>
-  <h1 class="font-bold text-2xl mb-8">LPI Merch</h1>
-  <div class="p-4 w-full md:w-[32rem] bg-rose-50 rounded-lg text-[#d60f0f] flex flex-col items-center">
-    <Image src={heartRed} alt="Heart icon" class="text-center"/>
-    <h2 class="mt-1 font-bold text-xl text-center" >100% For The Community</h2>
-    <p class="text-center">All profits go to the community to support local events, charitable initiatives, and free perks for members</p>
+  <a href='/' class='block mb-4 text-blue-500 lg:hover:underline'
+    >← Back to Home</a
+  >
+  <h1 class='font-bold text-2xl mb-8'>LPI Merch</h1>
+  <div
+    class='p-4 w-full md:w-[32rem] bg-rose-50 rounded-lg text-[#d60f0f] flex flex-col items-center'
+  >
+    <Image src={heartRed} alt='Heart icon' class='text-center' />
+    <h2 class='mt-1 font-bold text-xl text-center'>100% For The Community</h2>
+    <p class='text-center'>
+      All profits go to the community to support local events, charitable
+      initiatives, and free perks for members
+    </p>
   </div>
-  <div class="mt-8 flex flex-wrap justify-center gap-4">
+  <div class='mt-8 flex flex-wrap justify-center gap-4'>
     {
-      products.map(product => (
+      products.map((product) => (
         <ProductCard
           id={product.id}
           name={product.name}
@@ -64,13 +77,25 @@ const products = [
       ))
     }
   </div>
-  <h2 class="mt-8 font-bold text-xl">How to Buy</h2>
-  <div class="p-4 mb-4 w-full md:w-[32rem] rounded-lg shadow-lg">
-    <ol class="list-decimal list-inside">
-      <li>Fill in the <a href="https://forms.gle/85Nyh14GiYj8EQTk8" target="_blank" class="text-blue-500 underline">Google Form</a> (Preorder ends 5 January 2025)</li>
+  <h2 class='mt-8 font-bold text-xl'>How to Buy</h2>
+  <div class='p-4 mb-4 w-full md:w-[32rem] rounded-lg shadow-lg'>
+    <ol class='list-decimal list-inside'>
+      <li>
+        Fill in the <a
+          href='https://forms.gle/85Nyh14GiYj8EQTk8'
+          target='_blank'
+          class='text-blue-500 underline'>Google Form</a
+        > (Preorder ends 5 January 2025)
+      </li>
       <li>Receive payment information</li>
       <li>Complete the purchase</li>
     </ol>
-    <p class="mt-4">If you have any questions, feel free to reach us out on <a href="https://www.instagram.com/lp_indonesia" class="text-blue-500 underline" target="_blank">Instagram</a>!</p>
+    <p class='mt-4'>
+      If you have any questions, feel free to reach us out on <a
+        href='https://www.instagram.com/lp_indonesia'
+        class='text-blue-500 underline'
+        target='_blank'>Instagram</a
+      >!
+    </p>
   </div>
 </Layout>

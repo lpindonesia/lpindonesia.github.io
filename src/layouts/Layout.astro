@@ -1,52 +1,51 @@
 ---
-import { Image } from 'astro:assets';
-import LPILogo from '../assets/lpi-logo-2024-red.svg';
+import { Image } from 'astro:assets'
+import LPILogo from '../assets/lpi-logo-2024-red.svg'
 
-const getCurrentYear = () => new Date().getFullYear();
-const currentPath = Astro.url.pathname;
+const currentPath = Astro.url.pathname
 const {
   title,
   imgUrl = '/images/lpi-og-landscape.png',
-  description = 'Est. 2009 | Always, #IndonesiaNeedsLP'
+  description = 'Est. 2009 | Always, #IndonesiaNeedsLP',
 } = Astro.props
 ---
 
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
-    <meta property="og:url" content="https://lpindonesia.com" />
-    <meta property="og:image" content={imgUrl} />
-    <meta property="og:description" content={description} />
-		<title>{title}</title>
-	</head>
-	<body class="flex flex-col items-center py-8 px-4">
-		<slot />
-    <footer class="mt-8 flex flex-col items-center">
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='generator' content={Astro.generator} />
+    <meta property='og:type' content='website' />
+    <meta property='og:title' content={title} />
+    <meta property='og:url' content='https://lpindonesia.com' />
+    <meta property='og:image' content={imgUrl} />
+    <meta property='og:description' content={description} />
+    <title>{title}</title>
+  </head>
+  <body class='flex flex-col items-center py-8 px-4'>
+    <slot />
+    <footer class='mt-8 flex flex-col items-center'>
       {
         currentPath !== '/' && (
-          <a href="/" class="block">
-            <Image src={LPILogo} alt="LP Indonesia Logo" class="w-8" />
+          <a href='/' class='block'>
+            <Image src={LPILogo} alt='LP Indonesia Logo' class='w-8' />
           </a>
         )
       }
-      © {getCurrentYear()} LP Indonesia
+      <span id='copyright-text'></span>
     </footer>
-	</body>
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
 
   @font-face {
     font-family: 'BebasNeue';
@@ -56,3 +55,11 @@ const {
     src: url('/fonts/BebasNeue-Regular.ttf') format('truetype');
   }
 </style>
+
+<script>
+  const getCurrentYear = () => new Date().getFullYear()
+  const copyrightText = document.getElementById('copyright-text')
+  if (copyrightText) {
+    copyrightText.innerText = `© ${getCurrentYear()} LP Indonesia`
+  }
+</script>

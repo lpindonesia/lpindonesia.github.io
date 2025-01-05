@@ -1,0 +1,78 @@
+---
+import { Image } from 'astro:assets'
+import Button from './Button.astro'
+
+import tributeImg from '../../public/images/tribute-20250111.jpg'
+---
+
+<style>
+  dialog::backdrop {
+    background-color: black;
+    opacity: 0.5;
+  }
+</style>
+
+<dialog id='dialog-tribute-poster-20250111' class='w-full md:w-4/12'>
+  <div class='p-4 bg-white flex flex-col items-center'>
+    <h1 class='font-bold text-xl'>Millenium Tribute Night Party</h1>
+    <Image
+      src={tributeImg}
+      alt={'Tribute 11 January 2025'}
+      class='object-scale-down w-8/12 shadow mt-4'
+    />
+    <a
+      href='https://www.instagram.com/p/DEZDKX-zF2A'
+      target='_blank'
+      class='mt-4 w-full'
+    >
+      <Button
+        id='lern-more-tribute-poster-20250111'
+        class='w-full'
+        label='Learn More'
+      />
+    </a>
+    <button
+      id='close-dialog-tribute-poster-20250111'
+      class='mt-4 bg-none underline'>Close</button
+    >
+  </div>
+</dialog>
+
+<script>
+  const dialog = document.getElementById(
+    'dialog-tribute-poster-20250111'
+  ) as HTMLDialogElement
+  const closeButton = document.getElementById(
+    'close-dialog-tribute-poster-20250111'
+  )
+  const learnMoreButton = document.getElementById(
+    'lern-more-tribute-poster-20250111'
+  )
+
+  if (dialog && closeButton && learnMoreButton) {
+    const today = new Date().toISOString().split('T')[0]
+    const lastShownDate = localStorage.getItem('tribute-poster-20250111')
+
+    const eventDate = new Date('2025-01-11')
+
+    if (lastShownDate !== today && !(new Date(today) > eventDate)) {
+      dialog.showModal()
+    }
+
+    function closeDialog() {
+      dialog.close()
+      localStorage.setItem(
+        'tribute-poster-20250111',
+        new Date().toISOString().split('T')[0]
+      )
+    }
+
+    learnMoreButton.addEventListener('click', () => {
+      closeDialog()
+    })
+
+    closeButton.addEventListener('click', () => {
+      closeDialog()
+    })
+  }
+</script>

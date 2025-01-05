@@ -14,7 +14,7 @@ import tributeImg from '../../public/images/tribute-20250111.jpg'
 
 <dialog id='dialog-tribute-poster-20250111' class='w-full md:w-4/12'>
   <div class='p-4 bg-white flex flex-col items-center'>
-    <h1 class='font-bold text-xl'>Millenium Tribute Night Party!</h1>
+    <h1 class='font-bold text-xl'>Millenium Tribute Night Party</h1>
     <Image
       src={tributeImg}
       alt={'Tribute 11 January 2025'}
@@ -25,7 +25,11 @@ import tributeImg from '../../public/images/tribute-20250111.jpg'
       target='_blank'
       class='mt-4 w-full'
     >
-      <Button class='w-full' label='Learn More' />
+      <Button
+        id='lern-more-tribute-poster-20250111'
+        class='w-full'
+        label='Learn More'
+      />
     </a>
     <button
       id='close-dialog-tribute-poster-20250111'
@@ -41,12 +45,34 @@ import tributeImg from '../../public/images/tribute-20250111.jpg'
   const closeButton = document.getElementById(
     'close-dialog-tribute-poster-20250111'
   )
+  const learnMoreButton = document.getElementById(
+    'lern-more-tribute-poster-20250111'
+  )
 
-  if (dialog && closeButton) {
-    dialog.showModal()
+  if (dialog && closeButton && learnMoreButton) {
+    const today = new Date().toISOString().split('T')[0]
+    const lastShownDate = localStorage.getItem('tribute-poster-20250111')
+
+    const eventDate = new Date('2025-01-11')
+
+    if (lastShownDate !== today && !(new Date(today) > eventDate)) {
+      dialog.showModal()
+    }
+
+    function closeDialog() {
+      dialog.close()
+      localStorage.setItem(
+        'tribute-poster-20250111',
+        new Date().toISOString().split('T')[0]
+      )
+    }
+
+    learnMoreButton.addEventListener('click', () => {
+      closeDialog()
+    })
 
     closeButton.addEventListener('click', () => {
-      dialog.close()
+      closeDialog()
     })
   }
 </script>

@@ -8,6 +8,8 @@ import instagramLogo from '../assets/instagram.svg'
 import whatsAppLogo from '../assets/whatsapp.svg'
 import emailLogo from '../assets/email.svg'
 
+import tributeImg from '../../public/images/tribute-20250111.jpg'
+
 import SocialButton from '../components/SocialButton.astro'
 import Button from '../components/Button.astro'
 ---
@@ -63,4 +65,36 @@ import Button from '../components/Button.astro'
       alt='Email Logo'
     />
   </div>
+  <dialog id='dialog-tribute-poster-20250111' class='w-full md:w-4/12 fixed'>
+    <div class='relative p4 bg-white'>
+      <button
+        autofocus
+        id={'close-dialog-tribute-poster-20250111'}
+        class='absolute top-4 right-4 px-2 py-1 bg-[#d60f0f] text-white font-bold rounded-md'
+        >✕</button
+      >
+      <Image
+        src={tributeImg}
+        alt={'Tribute 11 January 2025'}
+        class='object-cover w-full'
+      />
+    </div>
+  </dialog>
 </Layout>
+
+<script>
+  const dialog = document.getElementById(
+    'dialog-tribute-poster-20250111'
+  ) as HTMLDialogElement
+  const closeButton = document.getElementById(
+    'close-dialog-tribute-poster-20250111'
+  )
+
+  if (dialog && closeButton) {
+    dialog.showModal()
+
+    closeButton.addEventListener('click', () => {
+      dialog.close()
+    })
+  }
+</script>

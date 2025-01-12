@@ -27,10 +27,6 @@ import Tribute20250111 from '../components/Tribute20250111.astro'
     <a href='https://linkinparkinjakarta2025.com' target='_blank'>
       <Button label='🎫 Live in Jakarta 2025' />
     </a>
-    <Button
-      id='open-dialog-tribute-poster-20250111'
-      label='🎤 Tribute Event - 11 January 2025'
-    />
     <a href='https://bit.ly/panduanlprocksmadya2025' target='_blank'>
       <Button label='📖 Panduan #LPRocksMadya2025' />
     </a>
@@ -66,18 +62,4 @@ import Tribute20250111 from '../components/Tribute20250111.astro'
     />
   </div>
   <Tribute20250111 />
-  <script>
-    const tributeDialog = document.getElementById(
-      'dialog-tribute-poster-20250111'
-    ) as HTMLDialogElement
-    const openTributeButton = document.getElementById(
-      'open-dialog-tribute-poster-20250111'
-    ) as HTMLDialogElement
-
-    if (tributeDialog && openTributeButton) {
-      openTributeButton.addEventListener('click', () => {
-        tributeDialog.showModal()
-      })
-    }
-  </script>
 </Layout>

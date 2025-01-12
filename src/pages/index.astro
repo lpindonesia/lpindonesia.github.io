@@ -25,7 +25,7 @@ import Tribute20250111 from '../components/Tribute20250111.astro'
   </div>
   <div class='mb-4 mt-4 grid grid-cols-1 gap-y-2'>
     <a href='https://linkinparkinjakarta2025.com' target='_blank'>
-      <Button label='🎫 Live in Jakarta 2025' />
+      <Button id='countdown' label='🎫 Live in Jakarta 2025' />
     </a>
     <a href='https://bit.ly/panduanlprocksmadya2025' target='_blank'>
       <Button label='📖 Panduan #LPRocksMadya2025' />
@@ -61,5 +61,21 @@ import Tribute20250111 from '../components/Tribute20250111.astro'
       alt='Email Logo'
     />
   </div>
-  <Tribute20250111 />
+  <script>
+    function updateCountdown() {
+      const targetDate = new Date('2025-02-16T00:00:00')
+      const today = new Date()
+      const timeDiff = targetDate.getTime() - today.getTime()
+      const daysRemaining = Math.floor(timeDiff / (1000 * 3600 * 24))
+
+      if (daysRemaining >= 0) {
+        const countdownElement = document.getElementById('countdown')
+        if (countdownElement) {
+          countdownElement.textContent = `🎫 Live in Jakarta 2025 (D-${daysRemaining})`
+        }
+      }
+    }
+
+    updateCountdown()
+  </script>
 </Layout>

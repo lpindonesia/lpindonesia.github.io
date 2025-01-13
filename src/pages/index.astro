@@ -66,7 +66,7 @@ import Tribute20250111 from '../components/Tribute20250111.astro'
       const targetDate = new Date('2025-02-16T00:00:00')
       const today = new Date()
       const timeDiff = targetDate.getTime() - today.getTime()
-      const daysRemaining = Math.floor(timeDiff / (1000 * 3600 * 24))
+      const daysRemaining = Math.ceil(timeDiff / (1000 * 3600 * 24))
 
       if (daysRemaining >= 0) {
         const countdownElement = document.getElementById('countdown')

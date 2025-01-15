@@ -70,11 +70,10 @@ import Gathering20250126 from '../components/Gathering20250126.astro'
   </div>
   <Gathering20250126 />
   <script>
+    import getDayCountdown from '../utils/getDayCountdown'
+
     function updateCountdown() {
-      const targetDate = new Date('2025-02-16T00:00:00')
-      const today = new Date()
-      const timeDiff = targetDate.getTime() - today.getTime()
-      const daysRemaining = Math.ceil(timeDiff / (1000 * 3600 * 24))
+      const daysRemaining = getDayCountdown('2025-02-16T00:00:00')
 
       if (daysRemaining >= 0) {
         const countdownElement = document.getElementById(

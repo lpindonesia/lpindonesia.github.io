@@ -1,0 +1,85 @@
+---
+import { Image } from 'astro:assets'
+import Button from './Button.astro'
+
+import tributeImg from '../../public/images/tribute-20250126.jpg'
+---
+
+<style>
+  dialog::backdrop {
+    background-color: black;
+    opacity: 0.5;
+  }
+</style>
+
+<dialog id='dialog-gathering-poster-20250126' class='w-full md:w-4/12'>
+  <div class='p-4 bg-white flex flex-col items-center'>
+    <h1 class='font-bold text-xl'>Gathering LP Semarang</h1>
+
+    <Image
+      src={tributeImg}
+      alt={'Tribute 11 January 2025'}
+      class='object-scale-down w-8/12 shadow mt-4'
+    />
+    <a
+      href='https://forms.gle/w3eF2KckRkH93LXeA'
+      target='_blank'
+      class='mt-4 w-full'
+    >
+      <Button
+        id='learn-more-gathering-poster-20250126'
+        class='w-full'
+        label='🎟️ Register Now!'
+      />
+    </a>
+    <button
+      id='close-dialog-gathering-poster-20250126'
+      class='mt-4 bg-none underline'>Close</button
+    >
+  </div>
+</dialog>
+
+<script>
+  const dialog = document.getElementById(
+    'dialog-gathering-poster-20250126'
+  ) as HTMLDialogElement
+  const closeButton = document.getElementById(
+    'close-dialog-gathering-poster-20250126'
+  )
+  const learnMoreButton = document.getElementById(
+    'learn-more-gathering-poster-20250126'
+  )
+
+  if (dialog && closeButton && learnMoreButton) {
+    const today = new Date().toISOString().split('T')[0]
+    const lastShownDate = localStorage.getItem('gathering-poster-20250126')
+
+    const eventDate = new Date('2025-01-26')
+
+    if (lastShownDate !== today && !(new Date(today) > eventDate)) {
+      dialog.showModal()
+    }
+
+    function closeDialog() {
+      dialog.close()
+      localStorage.setItem(
+        'gathering-poster-20250126',
+        new Date().toISOString().split('T')[0]
+      )
+    }
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeDialog()
+      }
+    })
+
+    learnMoreButton.addEventListener('click', () => {
+      closeDialog()
+    })
+
+    closeButton.addEventListener('click', () => {
+      closeDialog()
+    })
+  }
+</script>

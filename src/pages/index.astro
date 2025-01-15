@@ -10,7 +10,7 @@ import emailLogo from '../assets/email.svg'
 
 import SocialButton from '../components/SocialButton.astro'
 import Button from '../components/Button.astro'
-import Tribute20250111 from '../components/Tribute20250111.astro'
+import Tribute20250126 from '../components/Tribute20250126.astro'
 ---
 
 <Layout title='LP Indonesia'>
@@ -27,6 +27,10 @@ import Tribute20250111 from '../components/Tribute20250111.astro'
     <a href='https://linkinparkinjakarta2025.com' target='_blank'>
       <Button id='countdown' label='🎫 Live in Jakarta 2025' />
     </a>
+    <Button
+      id='open-dialog-gathering-poster-20250126'
+      label='🤝 Gathering LP Semarang 26 Jan 2025'
+    />
     <a href='https://bit.ly/panduanlprocksmadya2025' target='_blank'>
       <Button label='📖 Panduan #LPRocksMadya2025' />
     </a>
@@ -61,6 +65,7 @@ import Tribute20250111 from '../components/Tribute20250111.astro'
       alt='Email Logo'
     />
   </div>
+  <Tribute20250126 />
   <script>
     function updateCountdown() {
       const targetDate = new Date('2025-02-16T00:00:00')
@@ -77,5 +82,18 @@ import Tribute20250111 from '../components/Tribute20250111.astro'
     }
 
     updateCountdown()
+
+    const tributeDialog = document.getElementById(
+      'dialog-gathering-poster-20250126'
+    ) as HTMLDialogElement
+    const openTributeButton = document.getElementById(
+      'open-dialog-gathering-poster-20250126'
+    ) as HTMLDialogElement
+
+    if (tributeDialog && openTributeButton) {
+      openTributeButton.addEventListener('click', () => {
+        tributeDialog.showModal()
+      })
+    }
   </script>
 </Layout>

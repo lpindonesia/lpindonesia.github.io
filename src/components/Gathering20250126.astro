@@ -40,6 +40,8 @@ import tributeImg from '../../public/images/20250126-gathering.jpg'
 </dialog>
 
 <script>
+  import getDayCountdown from '../utils/getDayCountdown'
+
   const dialog = document.getElementById(
     'dialog-gathering-poster-20250126'
   ) as HTMLDialogElement
@@ -82,4 +84,22 @@ import tributeImg from '../../public/images/20250126-gathering.jpg'
       closeDialog()
     })
   }
+
+  function updateCountdown() {
+    const daysRemaining = getDayCountdown('2025-01-26T00:00:00')
+
+    if (daysRemaining > 0) {
+      const countdownElement = document.getElementById(
+        'learn-more-gathering-poster-20250126'
+      )
+
+      const dayTemplate = daysRemaining > 1 ? 'Days' : 'Day'
+
+      if (countdownElement) {
+        countdownElement.textContent = `🎟️ Register Today • ${daysRemaining} ${dayTemplate} Left!`
+      }
+    }
+  }
+
+  updateCountdown()
 </script>

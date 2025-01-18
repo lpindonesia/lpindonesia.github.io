@@ -32,6 +32,8 @@ import tributeImg from '../../public/images/20250126-gathering.jpg'
         label='🎟️ Register Now!'
       />
     </a>
+    <p id='seats-remaining-gathering-20250126' class='text-sm animate-pulse'>
+    </p>
     <button
       id='close-dialog-gathering-poster-20250126'
       class='mt-4 bg-none underline'>Close</button
@@ -101,5 +103,25 @@ import tributeImg from '../../public/images/20250126-gathering.jpg'
     }
   }
 
+  async function getSeatsRemaining() {
+    try {
+      const response = await fetch(
+        'https://lpindonesia-panel.vercel.app/api/events/1'
+      )
+      const { data: eventDetails } = await response.json()
+      const pElement = document.getElementById(
+        'seats-remaining-gathering-20250126'
+      )
+      const remainingSeats =
+        eventDetails.max_participants - eventDetails.current_participants
+      if (pElement && remainingSeats > 0) {
+        pElement.textContent = `${remainingSeats} Seats Remaining`
+      }
+    } catch (error) {
+      console.error('Error fetching event details:', error)
+    }
+  }
+
+  getSeatsRemaining()
   updateCountdown()
 </script>

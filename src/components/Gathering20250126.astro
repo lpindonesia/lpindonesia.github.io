@@ -27,14 +27,15 @@ import tributeImg from '../../public/images/20250126-gathering.jpg'
       class='mt-4 w-full'
     >
       <Button
+        disabled
         id='learn-more-gathering-poster-20250126'
         class='w-full'
-        label='🎟️ Register Now!'
+        label='Sold Out!'
       />
     </a>
-    <p id='seats-remaining-gathering-20250126' class='text-sm animate-pulse'>
+    <!-- <p id='seats-remaining-gathering-20250126' class='text-sm animate-pulse'>
       Loading...
-    </p>
+    </p> -->
     <button
       id='close-dialog-gathering-poster-20250126'
       class='mt-4 bg-none underline'>Close</button
@@ -43,7 +44,7 @@ import tributeImg from '../../public/images/20250126-gathering.jpg'
 </dialog>
 
 <script>
-  import getDayCountdown from '../utils/getDayCountdown'
+  // import getDayCountdown from '../utils/getDayCountdown'
 
   const dialog = document.getElementById(
     'dialog-gathering-poster-20250126'
@@ -88,43 +89,42 @@ import tributeImg from '../../public/images/20250126-gathering.jpg'
     })
   }
 
-  function updateCountdown() {
-    const daysRemaining = getDayCountdown('2025-01-26T00:00:00')
+  // function updateCountdown() {
+  //   const daysRemaining = getDayCountdown('2025-01-26T00:00:00')
 
-    if (daysRemaining > 0) {
-      const countdownElement = document.getElementById(
-        'learn-more-gathering-poster-20250126'
-      )
+  //   if (daysRemaining > 0) {
+  //     const countdownElement = document.getElementById(
+  //       'learn-more-gathering-poster-20250126'
+  //     ) as HTMLButtonElement
 
-      const dayTemplate = daysRemaining > 1 ? 'Days' : 'Day'
+  //     if (countdownElement) {
+  //       countdownElement.textContent = 'Sold Out!'
+  //       countdownElement.disabled = true
+  //     }
+  //   }
+  // }
 
-      if (countdownElement) {
-        countdownElement.textContent = `🎟️ Register Today • ${daysRemaining} ${dayTemplate} Left!`
-      }
-    }
-  }
+  // async function getSeatsRemaining() {
+  //   try {
+  //     const response = await fetch(
+  //       'https://lpindonesia-panel.vercel.app/api/events/1'
+  //     )
+  //     const { data: eventDetails } = await response.json()
+  //     const pElement = document.getElementById(
+  //       'seats-remaining-gathering-20250126'
+  //     )
+  //     const remainingSeats =
+  //       eventDetails.max_participants - eventDetails.current_participants
+  //     if (pElement && remainingSeats > 0) {
+  //       pElement.textContent = `${remainingSeats} Seats Remaining`
+  //     } else if (pElement) {
+  //       pElement.textContent = ''
+  //     }
+  //   } catch (error) {
+  //     console.error('Error fetching event details:', error)
+  //   }
+  // }
 
-  async function getSeatsRemaining() {
-    try {
-      const response = await fetch(
-        'https://lpindonesia-panel.vercel.app/api/events/1'
-      )
-      const { data: eventDetails } = await response.json()
-      const pElement = document.getElementById(
-        'seats-remaining-gathering-20250126'
-      )
-      const remainingSeats =
-        eventDetails.max_participants - eventDetails.current_participants
-      if (pElement && remainingSeats > 0) {
-        pElement.textContent = `${remainingSeats} Seats Remaining`
-      } else if (pElement) {
-        pElement.textContent = ''
-      }
-    } catch (error) {
-      console.error('Error fetching event details:', error)
-    }
-  }
-
-  getSeatsRemaining()
-  updateCountdown()
+  // getSeatsRemaining()
+  // updateCountdown()
 </script>

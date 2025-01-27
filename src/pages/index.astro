@@ -34,10 +34,6 @@ import Gathering20250126 from '../components/Gathering20250126.astro'
         label='🎫 Live in Jakarta 2025'
       />
     </a>
-    <Button
-      id='open-dialog-gathering-poster-20250126'
-      label='🤝 Gathering LP Semarang 26 Jan 2025'
-    />
     <a href='https://bit.ly/panduanlprocksmadya2025' target='_blank'>
       <Button label='📖 Panduan #LPRocksMadya2025' />
     </a>
@@ -72,7 +68,6 @@ import Gathering20250126 from '../components/Gathering20250126.astro'
       alt='Email Logo'
     />
   </div>
-  <Gathering20250126 />
   <script>
     import getDayCountdown from '../utils/getDayCountdown'
 
@@ -90,18 +85,5 @@ import Gathering20250126 from '../components/Gathering20250126.astro'
     }
 
     updateCountdown()
-
-    const tributeDialog = document.getElementById(
-      'dialog-gathering-poster-20250126'
-    ) as HTMLDialogElement
-    const openTributeButton = document.getElementById(
-      'open-dialog-gathering-poster-20250126'
-    ) as HTMLDialogElement
-
-    if (tributeDialog && openTributeButton) {
-      openTributeButton.addEventListener('click', () => {
-        tributeDialog.showModal()
-      })
-    }
   </script>
 </Layout>

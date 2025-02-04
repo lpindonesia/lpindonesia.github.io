@@ -1,5 +1,5 @@
 ---
-const { id, label, disabled, class: className } = Astro.props
+const { id, label, disabled, class: className, style } = Astro.props
 ---
 
 <button
@@ -12,6 +12,7 @@ const { id, label, disabled, class: className } = Astro.props
       : 'bg-[#d60f0f] text-white lg:hover:bg-[#b20d0d] lg:transition-all',
     className,
   ]}
+  style={style}
 >
   {label}
 </button>

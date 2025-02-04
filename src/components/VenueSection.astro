@@ -1,0 +1,92 @@
+---
+import Button from './Button.astro'
+
+const SECTIONS = [
+  {
+    name: 'LPU Pit A&B',
+    backgroundColor: '#3B5494',
+    color: 'white',
+    url: 'https://chat.whatsapp.com/GXzN46ZcfOFKElKsSjC95D',
+  },
+  {
+    name: 'Blue A&B',
+    backgroundColor: '#A6CAE5',
+    color: 'black',
+    url: 'https://chat.whatsapp.com/IzEqZEvTkoy5gJ6wW4l86o',
+  },
+  {
+    name: 'Yellow A&B',
+    backgroundColor: '#EAAD57',
+    color: 'black',
+    url: 'https://chat.whatsapp.com/JuXWZB3t7nCFjw1HH2ZPeO',
+  },
+  {
+    name: 'Pink',
+    backgroundColor: '#F63798',
+    color: 'black',
+    url: 'https://chat.whatsapp.com/KhhZEiLKT7LJxkcNXscmAZ',
+  },
+  {
+    name: 'Green',
+    backgroundColor: '#12C9A6',
+    color: 'black',
+    url: 'https://chat.whatsapp.com/DujB8VNO9QJAgngPDLo536',
+  },
+  {
+    name: 'Purple A&B',
+    backgroundColor: '#9E6EFE',
+    color: 'black',
+    url: 'https://chat.whatsapp.com/LU8njQLRkVNFclFJsHxbtE',
+  },
+  {
+    name: 'Orange',
+    backgroundColor: '#FF811A',
+    color: 'black',
+    url: 'https://chat.whatsapp.com/Lth7EMPw0mg7bVb7Exz7r2',
+  },
+]
+---
+
+<style>
+  dialog::backdrop {
+    background-color: black;
+    opacity: 0.5;
+  }
+</style>
+
+<dialog id='dialog-venue-section' class='w-full md:w-4/12'>
+  <div class='p-4 bg-white flex flex-col items-center'>
+    <h1 class='font-bold text-xl text-center'>
+      Yuk Gabung ke Grup WA Sesuai dengan Section Nonton Kamu!
+    </h1>
+
+    <div class='grid grid-cols-1 gap-4 mt-4'>
+      {
+        SECTIONS.map((section) => (
+          <a href={section.url} target='_blank'>
+            <Button
+              label={section.name}
+              class='uppercase'
+              style={`background-color: ${section.backgroundColor}; color: ${section.color};`}
+            />
+          </a>
+        ))
+      }
+    </div>
+    <button id='dialog-close-venue-section' class='mt-4 bg-none underline'
+      >Close</button
+    >
+  </div>
+</dialog>
+
+<script>
+  const dialog = document.getElementById(
+    'dialog-venue-section'
+  ) as HTMLDialogElement
+  const closeButton = document.getElementById('dialog-close-venue-section')
+  if (dialog && closeButton) {
+    closeButton.onclick = () => {
+      dialog.close()
+    }
+  }
+</script>

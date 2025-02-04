@@ -10,6 +10,7 @@ import emailLogo from '../assets/email.svg'
 
 import SocialButton from '../components/SocialButton.astro'
 import Button from '../components/Button.astro'
+import VenueSection from '../components/VenueSection.astro'
 ---
 
 <Layout title='LP Indonesia'>
@@ -51,12 +52,10 @@ import Button from '../components/Button.astro'
     <a href='past-events'>
       <Button label='📅 Past Events' />
     </a>
-    <a
-      href='https://docs.google.com/forms/d/e/1FAIpQLSeO-i0j_ny1xN6Pwd13MOY6vqPR10io_RytWAKQAwUMSpBC7A/viewform'
-      target='_blank'
-    >
-      <Button label='📝 Kamu Nonton di Section Apa?' />
-    </a>
+    <Button
+      id='dialog-open-venue-section'
+      label='📝 Kamu Nonton di Section Apa?'
+    />
   </div>
   <div class='flex justify-center gap-x-4'>
     <SocialButton
@@ -76,6 +75,7 @@ import Button from '../components/Button.astro'
       alt='Email Logo'
     />
   </div>
+  <VenueSection />
   <script>
     import getDayCountdown from '../utils/getDayCountdown'
 
@@ -93,5 +93,17 @@ import Button from '../components/Button.astro'
     }
 
     updateCountdown()
+
+    const buttonOpenDialog = document.getElementById(
+      'dialog-open-venue-section'
+    )
+    const dialog = document.getElementById(
+      'dialog-venue-section'
+    ) as HTMLDialogElement
+    if (buttonOpenDialog && dialog) {
+      buttonOpenDialog.onclick = () => {
+        dialog.showModal()
+      }
+    }
   </script>
 </Layout>

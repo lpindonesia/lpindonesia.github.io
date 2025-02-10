@@ -11,6 +11,7 @@ import emailLogo from '../assets/email.svg'
 import SocialButton from '../components/SocialButton.astro'
 import Button from '../components/Button.astro'
 import VenueSection from '../components/VenueSection.astro'
+import PlaylistModal from '../components/PlaylistModal.astro'
 ---
 
 <Layout title='LP Indonesia'>
@@ -46,6 +47,10 @@ import VenueSection from '../components/VenueSection.astro'
     >
       <Button label='📖 #LPRocksMadya2025 Guide (English)' />
     </a>
+    <Button
+      id='dialog-open-from-zero-playlist'
+      label='🎵 From Zero World Tour 2025 Playlist'
+    />
     <a href='merch'>
       <Button label='👕 LPI Merch' />
     </a>
@@ -76,8 +81,10 @@ import VenueSection from '../components/VenueSection.astro'
     />
   </div>
   <VenueSection />
+  <PlaylistModal />
   <script>
     import getDayCountdown from '../utils/getDayCountdown'
+    import showEventModal from '../utils/showEventModal'
 
     function updateCountdown() {
       const daysRemaining = getDayCountdown('2025-02-16T00:00:00')
@@ -94,16 +101,10 @@ import VenueSection from '../components/VenueSection.astro'
 
     updateCountdown()
 
-    const buttonOpenDialog = document.getElementById(
-      'dialog-open-venue-section'
+    showEventModal(
+      'dialog-from-zero-playlist',
+      'dialog-open-from-zero-playlist'
     )
-    const dialog = document.getElementById(
-      'dialog-venue-section'
-    ) as HTMLDialogElement
-    if (buttonOpenDialog && dialog) {
-      buttonOpenDialog.onclick = () => {
-        dialog.showModal()
-      }
-    }
+    showEventModal('dialog-open-venue-section', 'dialog-venue-section')
   </script>
 </Layout>

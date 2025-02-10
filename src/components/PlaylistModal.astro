@@ -1,0 +1,66 @@
+---
+import Button from './Button.astro'
+
+const PLATFORMS = [
+  {
+    name: 'Spotify',
+    backgroundColor: '#1ED760',
+    color: 'white',
+    url: 'https://open.spotify.com/playlist/66LJ6jHeRCqvPIioNg2YSM',
+  },
+  {
+    name: 'Apple Music',
+    backgroundColor: '#FF4E6B',
+    color: 'white',
+    url: 'https://music.apple.com/id/playlist/linkin-park-from-zero-world-tour-2025-setlist/pl.u-r2yB1JEuR4WJj2G',
+  },
+  {
+    name: 'Youtube Music',
+    backgroundColor: '#C3352E',
+    color: 'white',
+    url: 'https://music.youtube.com/playlist?list=PL1E7jGwFZUgajQ_PhJNPTb03ItQ7TEigZ',
+  },
+]
+---
+
+<style>
+  dialog::backdrop {
+    background-color: black;
+    opacity: 0.5;
+  }
+</style>
+
+<dialog id='dialog-from-zero-playlist' class='w-full md:w-4/12'>
+  <div class='p-4 bg-white flex flex-col items-center'>
+    <h1 class='font-bold text-xl text-center'>
+      From Zero World Tour 2025 Playlist
+    </h1>
+
+    <div class='grid grid-cols-1 gap-4 mt-4'>
+      {
+        PLATFORMS.map((section) => (
+          <a href={section.url} target='_blank'>
+            <Button
+              label={section.name}
+              style={`background-color: ${section.backgroundColor}; color: ${section.color};`}
+            />
+          </a>
+        ))
+      }
+    </div>
+    <button id='dialog-close-from-zero-playlist' class='mt-4 bg-none underline'>Close</button
+    >
+  </div>
+</dialog>
+
+<script>
+  const dialog = document.getElementById(
+    'dialog-from-zero-playlist'
+  ) as HTMLDialogElement
+  const closeButton = document.getElementById('dialog-close-from-zero-playlist')
+  if (dialog && closeButton) {
+    closeButton.onclick = () => {
+      dialog.close()
+    }
+  }
+</script>

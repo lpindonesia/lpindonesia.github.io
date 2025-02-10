@@ -10,8 +10,12 @@ import tShirt from '../assets/images/merch/t-shirt.jpg'
 import bundleA from '../assets/images/merch/bundle-a.jpg'
 import bundleB from '../assets/images/merch/bundle-b.jpg'
 
-const isPreorderOpen = true
-const preorderEndDateString = '26 January 2025'
+const preorderEndDate = new Date('2025-01-26T23:59:59+07:00')
+const preorderEndDateString = preorderEndDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+})
 
 const products = [
   {
@@ -80,10 +84,10 @@ const products = [
       ))
     }
   </div>
-<h2 class='mt-8 font-bold text-xl'>How to Buy (Limited Quota!)</h2>
+<h2 class='mt-8 font-bold text-xl'>How to Buy</h2>
   <div class='p-4 mb-4 w-full md:w-[32rem] rounded-lg shadow-lg'>
     {
-      isPreorderOpen
+      preorderEndDate > new Date()
         ? (
           <ol class='list-decimal list-inside'>
             <li>

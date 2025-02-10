@@ -60,13 +60,13 @@ const SECTIONS = [
       Yuk Gabung ke Grup WA Sesuai dengan Section Nonton Kamu!
     </h1>
 
-    <div class='grid grid-cols-1 gap-4 mt-4'>
+    <div class='grid grid-cols-1 gap-4 mt-4 w-full'>
       {
         SECTIONS.map((section) => (
           <a href={section.url} target='_blank'>
             <Button
               label={section.name}
-              class='uppercase'
+              class='w-full uppercase'
               style={`background-color: ${section.backgroundColor}; color: ${section.color};`}
             />
           </a>

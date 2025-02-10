@@ -1,5 +1,7 @@
 ---
 import Button from './Button.astro'
+import fztiPlaylistCover from '../assets/images/fzti-playlist-cover.jpg'
+import { Image } from 'astro:assets'
 
 const PLATFORMS = [
   {
@@ -33,22 +35,30 @@ const PLATFORMS = [
 <dialog id='dialog-from-zero-playlist' class='w-full md:w-4/12'>
   <div class='p-4 bg-white flex flex-col items-center'>
     <h1 class='font-bold text-xl text-center'>
-      From Zero World Tour 2025 Playlist
+      #From Zero World Tour 2025 Playlist
     </h1>
 
-    <div class='grid grid-cols-1 gap-4 mt-4'>
+    <Image
+      src={fztiPlaylistCover}
+      alt='From Zero World Tour 2025 Playlist'
+      class='mt-4 w-52 shadow-md rounded'
+    />
+
+    <div class='grid grid-cols-1 gap-4 mt-4 w-full'>
       {
         PLATFORMS.map((section) => (
           <a href={section.url} target='_blank'>
             <Button
               label={section.name}
               style={`background-color: ${section.backgroundColor}; color: ${section.color};`}
+              class='w-full'
             />
           </a>
         ))
       }
     </div>
-    <button id='dialog-close-from-zero-playlist' class='mt-4 bg-none underline'>Close</button
+    <button id='dialog-close-from-zero-playlist' class='mt-4 bg-none underline'
+      >Close</button
     >
   </div>
 </dialog>

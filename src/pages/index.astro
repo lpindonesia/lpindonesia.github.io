@@ -12,6 +12,8 @@ import SocialButton from '../components/SocialButton.astro'
 import Button from '../components/Button.astro'
 import VenueSection from '../components/VenueSection.astro'
 import PlaylistModal from '../components/PlaylistModal.astro'
+import LinkButton from '../components/LinkButton.astro'
+import ExternalLinkButton from '../components/ExternalLinkButton.astro'
 ---
 
 <Layout title='LP Indonesia'>
@@ -29,12 +31,12 @@ import PlaylistModal from '../components/PlaylistModal.astro'
       <img src='/images/pbe.png' alt='PBE' />
       <img src='/images/mjc.png' alt='MJC' />
     </div>
-    <a href='https://linkinparkinjakarta2025.com' target='_blank'>
-      <Button
-        id='countdown-live-in-jakarta-2025'
-        label='🎫 Live in Jakarta 2025'
-      />
-    </a>
+    <Button
+      id='dialog-open-from-zero-playlist'
+      label='🎵 From Zero World Tour 2025 Playlist'
+    />
+    <LinkButton url='past-events' label='📅 Past Events' />
+    <LinkButton url='merch' label='👕 LPI Merch' />
     <a
       href='https://mica-stetson-0f3.notion.site/Panduan-LPRocksMadya2025-151696400394805ab06fe6da32757ac3'
       target='_blank'
@@ -47,20 +49,6 @@ import PlaylistModal from '../components/PlaylistModal.astro'
     >
       <Button label='📖 #LPRocksMadya2025 Guide (English)' />
     </a>
-    <Button
-      id='dialog-open-from-zero-playlist'
-      label='🎵 From Zero World Tour 2025 Playlist'
-    />
-    <a href='merch'>
-      <Button label='👕 LPI Merch' />
-    </a>
-    <a href='past-events'>
-      <Button label='📅 Past Events' />
-    </a>
-    <Button
-      id='dialog-open-venue-section'
-      label='📝 Kamu Nonton di Section Apa?'
-    />
   </div>
   <div class='flex justify-center gap-x-4'>
     <SocialButton

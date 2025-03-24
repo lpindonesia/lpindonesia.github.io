@@ -1,0 +1,14 @@
+---
+import Button from "./Button.astro";
+const { id, label, disabled, class: className, style, url } = Astro.props
+---
+
+<a href={url}>
+  <Button
+    id={id}
+    label={label}
+    class={className}
+    disabled={disabled}
+    style={style}
+  />
+</a>

@@ -146,14 +146,14 @@ export default function HuntingTrivia() {
           <p className='text-lg font-medium'>{currentTrivia.trivia_true}</p>
 
           {currentTrivia.source && (
-            <div className='mt-4 text-sm text-gray-600'>
+            <div className='mt-4 text-sm text-gray-600 truncate'>
               <span className='font-semibold'>Sumber:</span>{' '}
               {currentTrivia.source.match(/^https?:\/\//i) ? (
                 <a
                   href={currentTrivia.source}
                   target='_blank'
                   rel='noopener noreferrer'
-                  className='text-blue-500 hover:underline truncate'
+                  className='text-blue-500 hover:underline'
                 >
                   {currentTrivia.source}
                 </a>

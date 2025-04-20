@@ -1,11 +1,12 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import HuntingTrivia from '../components/react/TriviaComponent';
+import Layout from '../layouts/Layout.astro'
+import HuntingTrivia from '../components/react/TriviaComponent'
 ---
 
-<Layout title="Trivia | LP Indonesia">
-  <main class="container mx-auto py-8 px-4">
-    <h1 class="text-3xl font-bold text-center mb-8">Hunting Trivia Knowledge Base</h1>
-    <HuntingTrivia client:load />
-  </main>
+<Layout title='Trivia | LP Indonesia' description='Linkin Park Trivia'>
+  <a href='/' class='block mb-4 text-blue-500 lg:hover:underline'
+    >← Back to Home</a
+  >
+  <h1 class='text-3xl font-bold text-center mb-8'>Linkin Park Trivia</h1>
+  <HuntingTrivia client:load />
 </Layout>

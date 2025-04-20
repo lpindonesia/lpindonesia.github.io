@@ -125,10 +125,6 @@ export default function HuntingTrivia() {
 
   return (
     <div className='max-w-xs md:max-w-md lg:max-w-lg mx-auto p-6 bg-stone-100 rounded-lg shadow-md'>
-      <h2 className='text-2xl text-center font-bold text-[#d60f0f] mb-6'>
-        Trivia #{currentTrivia?.id}
-      </h2>
-
       {currentTrivia ? (
         <div className='bg-white p-4 rounded shadow-sm'>
           {currentTrivia.media && (

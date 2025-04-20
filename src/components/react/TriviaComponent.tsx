@@ -35,9 +35,22 @@ export default function HuntingTrivia() {
             const data = results.data as TriviaItem[]
             setTriviaData(data)
 
-            if (data.length > 0) {
-              const randomIndex = Math.floor(Math.random() * data.length)
-              setCurrentTrivia(data[randomIndex])
+            const params = new URLSearchParams(window.location.search)
+            const requestedId = params.get('id')
+              ? parseInt(params.get('id')!, 10)
+              : null
+
+            if (requestedId) {
+              const requestedTrivia = data.find(
+                (trivia) => trivia.id === requestedId
+              )
+              if (requestedTrivia) {
+                setCurrentTrivia(requestedTrivia)
+              } else {
+                selectRandomTrivia(data)
+              }
+            } else {
+              selectRandomTrivia(data)
             }
 
             setLoading(false)
@@ -60,33 +73,34 @@ export default function HuntingTrivia() {
     fetchData()
   }, [])
 
-  const getRandomTrivia = () => {
-    if (triviaData.length === 0) return
+  const selectRandomTrivia = (data: TriviaItem[] = triviaData) => {
+    if (data.length === 0) return
 
     const viewedTriviaIds = JSON.parse(
       localStorage.getItem('viewedTriviaIds') || '[]'
     )
 
-    const unviewedTrivias = triviaData.filter(
+    const unviewedTrivias = data.filter(
       (trivia) => !viewedTriviaIds.includes(trivia.id)
     )
 
+    let newTrivia: TriviaItem
+
     if (unviewedTrivias.length === 0) {
       localStorage.setItem('viewedTriviaIds', '[]')
-      setCurrentTrivia(
-        triviaData[Math.floor(Math.random() * triviaData.length)]
+      const randomIndex = Math.floor(Math.random() * data.length)
+      newTrivia = data[randomIndex]
+    } else {
+      const randomIndex = Math.floor(Math.random() * unviewedTrivias.length)
+      newTrivia = unviewedTrivias[randomIndex]
+
+      localStorage.setItem(
+        'viewedTriviaIds',
+        JSON.stringify([...viewedTriviaIds, newTrivia.id])
       )
-      return
     }
 
-    const randomIndex = Math.floor(Math.random() * unviewedTrivias.length)
-    const newTrivia = unviewedTrivias[randomIndex]
     setCurrentTrivia(newTrivia)
-
-    localStorage.setItem(
-      'viewedTriviaIds',
-      JSON.stringify([...viewedTriviaIds, newTrivia.id])
-    )
   }
 
   if (loading) {
@@ -129,12 +143,10 @@ export default function HuntingTrivia() {
               )}
             </>
           )}
-          <p className='mb-4 text-lg font-medium'>
-            {currentTrivia.trivia_true}
-          </p>
+          <p className='text-lg font-medium'>{currentTrivia.trivia_true}</p>
 
           {currentTrivia.source && (
-            <div className='text-sm text-gray-600'>
+            <div className='mt-4 text-sm text-gray-600'>
               <span className='font-semibold'>Sumber:</span>{' '}
               {currentTrivia.source.match(/^https?:\/\//i) ? (
                 <a
@@ -156,7 +168,7 @@ export default function HuntingTrivia() {
       )}
 
       <button
-        onClick={getRandomTrivia}
+        onClick={() => selectRandomTrivia()}
         className='mt-6 px-4 py-2 w-full bg-[#d60f0f] text-white rounded hover:bg-[#d60f0f] transition-colors'
       >
         Next Trivia

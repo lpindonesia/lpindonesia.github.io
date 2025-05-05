@@ -1,5 +1,34 @@
 ---
-const { id, label, disabled, class: className, style } = Astro.props
+const { id, label, disabled, class: className = '', style } = Astro.props
+
+const bgRegex = /(?:[\w-]+:)*bg-\[?[^\s]+?\]?/g
+const textRegex = /(?:[\w-]+:)*text-\[?[^\s]+?\]?/g
+
+const bgMatches = className.match(bgRegex) || []
+const textMatches = className.match(textRegex) || []
+
+let baseClass = 'w-80 p-4 font-medium rounded-lg'
+const excludedClasses = new Set([...bgMatches, ...textMatches])
+
+const restClasses = className
+  .split(/\s+/)
+  .filter((cls: string) => !excludedClasses.has(cls))
+
+if (bgMatches.length > 0) {
+  baseClass = ' ' + bgMatches.join(' ')
+} else if (disabled) {
+  baseClass += ' bg-[#E0E0E0] cursor-not-allowed'
+} else {
+  baseClass += ' bg-[#d60f0f] lg:hover:bg-[#b20d0d] lg:transition-all'
+}
+
+if (textMatches.length > 0) {
+  baseClass = ' ' + textMatches.join(' ')
+} else if (disabled) {
+  baseClass += ' text-[#9E9E9E]'
+} else {
+  baseClass += ' text-white'
+}
 ---
 
 <button
@@ -7,10 +36,8 @@ const { id, label, disabled, class: className, style } = Astro.props
   disabled={disabled}
   class:list={[
     'w-80 p-4 font-medium rounded-lg',
-    disabled
-      ? 'bg-[#E0E0E0] text-[#9E9E9E] cursor-not-allowed'
-      : 'bg-[#d60f0f] text-white lg:hover:bg-[#b20d0d] lg:transition-all',
-    className,
+    baseClass,
+    restClasses.join(' '),
   ]}
   style={style}
 >

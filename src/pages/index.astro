@@ -9,6 +9,7 @@ import PlaylistModal from '../components/PlaylistModal.astro'
 import LinkButton from '../components/LinkButton.astro'
 import SocialButtons from '../components/SocialButtons.astro'
 import Tribute20250426 from '../components/Tribute20250426.astro'
+import ExternalLinkButton from '../components/ExternalLinkButton.astro'
 ---
 
 <Layout title='LP Indonesia'>
@@ -26,9 +27,10 @@ import Tribute20250426 from '../components/Tribute20250426.astro'
       <img src='/images/pbe.png' alt='PBE' />
       <img src='/images/mjc.png' alt='MJC' />
     </div>
-    <Button
-      id='dialog-open-tribute-night-semarang-20250426'
-      label='🎸 Tribute Night Semarang'
+    <LinkButton
+      url='fzde'
+      label='💽 From Zero Deluxe Edition: Collective Pre-order'
+      class='bg-[#021F2A] text-[#D8B1E0] lg:hover:bg-[#D8B1E0] lg:hover:text-[#021F2A]'
     />
     <Button
       id='dialog-open-from-zero-playlist'

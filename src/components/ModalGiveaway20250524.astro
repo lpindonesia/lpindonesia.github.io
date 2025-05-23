@@ -1,0 +1,86 @@
+---
+import { Image } from 'astro:assets'
+import Button from './Button.astro'
+
+import giveawayFlyer from '../assets/images/events/lp_giveaway_may.jpg'
+---
+
+<style>
+  dialog::backdrop {
+    background-color: black;
+    opacity: 0.5;
+  }
+</style>
+
+<dialog id='dialog-linkin-park-merch-giveaway-20250524' class='w-full md:w-4/12'>
+  <div class='p-4 bg-white flex flex-col items-center'>
+    <h1 class='font-bold text-xl'>Linkin Park Merch Giveaway</h1>
+
+    <Image
+      src={giveawayFlyer}
+      alt={'Linkin Park Merch Giveaway May 2025'}
+      class='object-scale-down w-full lg:w-8/12 shadow mt-4'
+    />
+    <a
+      href='https://wct.live/app/43302/LinkinParkMerchGiveaway'
+      target='_blank'
+      class='mt-4 w-full'
+    >
+      <Button
+        id='learn-more-linkin-park-merch-giveaway-20250524'
+        class='w-full'
+        label='Join Now!'
+      />
+    </a>
+    </p>
+    <button
+      id='close-dialog-linkin-park-merch-giveaway-20250524'
+      class='mt-4 bg-none underline'>Close</button
+    >
+  </div>
+</dialog>
+
+<script>
+  const dialog = document.getElementById(
+    'dialog-linkin-park-merch-giveaway-20250524'
+  ) as HTMLDialogElement
+  const closeButton = document.getElementById(
+    'close-dialog-linkin-park-merch-giveaway-20250524'
+  )
+  const learnMoreButton = document.getElementById(
+    'learn-more-linkin-park-merch-giveaway-20250524'
+  )
+
+  if (dialog && closeButton && learnMoreButton) {
+    const today = new Date().toISOString().split('T')[0]
+    const lastShownDate = localStorage.getItem('linkin-park-merch-giveaway-20250524')
+
+    const eventDate = new Date('2025-06-15')
+
+    if (lastShownDate !== today && !(new Date(today) > eventDate)) {
+      dialog.showModal()
+    }
+
+    function closeDialog() {
+      dialog.close()
+      localStorage.setItem(
+        'linkin-park-merch-giveaway-20250524',
+        new Date().toISOString().split('T')[0]
+      )
+    }
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeDialog()
+      }
+    })
+
+    learnMoreButton.addEventListener('click', () => {
+      closeDialog()
+    })
+
+    closeButton.addEventListener('click', () => {
+      closeDialog()
+    })
+  }
+</script>

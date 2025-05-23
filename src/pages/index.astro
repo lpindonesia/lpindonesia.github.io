@@ -8,8 +8,7 @@ import Button from '../components/Button.astro'
 import PlaylistModal from '../components/PlaylistModal.astro'
 import LinkButton from '../components/LinkButton.astro'
 import SocialButtons from '../components/SocialButtons.astro'
-import Tribute20250426 from '../components/Tribute20250426.astro'
-import ExternalLinkButton from '../components/ExternalLinkButton.astro'
+import ModalGiveaway20250524 from '../components/ModalGiveaway20250524.astro'
 ---
 
 <Layout title='LP Indonesia'>
@@ -28,6 +27,10 @@ import ExternalLinkButton from '../components/ExternalLinkButton.astro'
       <img src='/images/mjc.png' alt='MJC' />
     </div>
     <Button
+      id='dialog-open-linkin-park-merch-giveaway-20250524'
+      label='🎁 Linkin Park Merch Giveaway'
+    />
+    <Button
       id='dialog-open-from-zero-playlist'
       label='🎵 From Zero World Tour 2025 Playlist'
     />
@@ -43,33 +46,17 @@ import ExternalLinkButton from '../components/ExternalLinkButton.astro'
   </div>
   <SocialButtons />
   <PlaylistModal />
-  <Tribute20250426 />
+  <ModalGiveaway20250524 />
   <script>
-    import getDayCountdown from '../utils/getDayCountdown'
     import showEventModal from '../utils/showEventModal'
-
-    function updateCountdown() {
-      const daysRemaining = getDayCountdown('2025-02-16T00:00:00')
-
-      if (daysRemaining >= 0) {
-        const countdownElement = document.getElementById(
-          'countdown-live-in-jakarta-2025'
-        )
-        if (countdownElement) {
-          countdownElement.textContent = `🎫 Live in Jakarta 2025 (D-${daysRemaining})`
-        }
-      }
-    }
-
-    updateCountdown()
-
     showEventModal(
       'dialog-from-zero-playlist',
       'dialog-open-from-zero-playlist'
     )
     showEventModal(
-      'dialog-tribute-night-semarang-20250426',
-      'dialog-open-tribute-night-semarang-20250426'
+      'dialog-linkin-park-merch-giveaway-20250524',
+      'dialog-open-linkin-park-merch-giveaway-20250524'
     )
+
   </script>
 </Layout>
